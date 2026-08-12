@@ -1,4 +1,4 @@
-# FAQAI — Frontend
+# FAQAI - Frontend
 
 React + Vite + Tailwind CSS frontend for the FAQAI chatbot.
 

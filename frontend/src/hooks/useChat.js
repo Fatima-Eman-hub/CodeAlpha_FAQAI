@@ -13,7 +13,7 @@ function makeWelcomeMessage() {
   return {
     id: "welcome",
     role: "bot",
-    text: "Hi! I'm FAQAI 👋 Ask me anything about AI or Machine Learning — I'll find the most relevant answer using TF-IDF and Cosine Similarity.",
+    text: "Hi! I'm FAQAI 👋 Ask me anything about AI or Machine Learning. I'll find the most relevant answer using TF-IDF and Cosine Similarity.",
     timestamp: new Date().toISOString(),
     matched: true,
   };
@@ -42,7 +42,7 @@ export function useChat() {
     try {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
     } catch {
-      // sessionStorage unavailable (e.g. private mode) — fail silently, chat still works in-memory
+      // sessionStorage unavailable (e.g. private mode); fail silently, chat still works in-memory
     }
   }, [messages]);
 
@@ -80,7 +80,7 @@ export function useChat() {
         id: nextId(),
         role: "bot",
         text: isRateLimited
-          ? "You're sending messages a bit fast — please wait a moment and try again."
+          ? "You're sending messages a bit fast. Please wait a moment and try again."
           : isNetworkError
           ? "Couldn't reach the server. Make sure the backend is running, then try again."
           : "Something went wrong on my end. Please try again in a moment.",

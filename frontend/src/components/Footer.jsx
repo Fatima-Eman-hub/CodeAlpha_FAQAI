@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Brain, ExternalLink } from "lucide-react";
+import { Compass } from "lucide-react";
 import GithubIcon from "./GithubIcon";
 
 const PAGES = [
@@ -22,38 +22,49 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t px-6 pb-8 pt-16 lg:px-8" style={{ borderColor: "var(--border-subtle)" }}>
+    <footer
+      className="px-6 pb-8 pt-16 lg:px-8"
+      style={{ backgroundColor: "var(--footer-bg)", color: "var(--footer-text)" }}
+    >
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="icon-glow flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-brand-700">
-                <Brain className="h-4 w-4 text-white" strokeWidth={2} />
+              <span
+                className="flex h-8 w-8 items-center justify-center rounded-md"
+                style={{ backgroundColor: "var(--footer-badge-bg)" }}
+              >
+                <Compass className="h-4 w-4" strokeWidth={2} style={{ color: "var(--footer-badge-fg)" }} />
               </span>
-              <span className="font-display text-base font-bold">
-                FAQ<span className="text-brand-500">AI</span>
+              <span className="font-display text-base font-bold" style={{ color: "var(--footer-text)" }}>
+                FAQ<span style={{ color: "var(--color-mustard-400)" }}>AI</span>
               </span>
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">
-              An NLP-powered FAQ chatbot built for learning purposes. Uses TF-IDF + Cosine Similarity for intelligent question
-              matching.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed" style={{ color: "var(--footer-text-secondary)" }}>
+              An NLP-powered FAQ chatbot built for learning purposes. Uses
+              TF-IDF and Cosine Similarity for intelligent question matching.
             </p>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-muted">Pages</h4>
+            <h4 className="label-tab" style={{ color: "var(--footer-text-muted)" }}>Pages</h4>
             <ul className="mt-4 space-y-2.5">
               {PAGES.map((page) => (
                 <li key={page.label}>
                   {page.to ? (
-                    <Link to={page.to} className="text-sm text-secondary hover:text-brand-500">
+                    <Link
+                      to={page.to}
+                      className="text-sm transition-colors hover:text-[var(--color-mustard-400)]"
+                      style={{ color: "var(--footer-text-secondary)" }}
+                    >
                       {page.label}
                     </Link>
                   ) : (
                     <a
                       href={page.hash}
                       onClick={handleAnchor(page.hash)}
-                      className="text-sm text-secondary hover:text-brand-500"
+                      className="text-sm transition-colors hover:text-[var(--color-mustard-400)]"
+                      style={{ color: "var(--footer-text-secondary)" }}
                     >
                       {page.label}
                     </a>
@@ -64,10 +75,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-muted">Tech Stack</h4>
+            <h4 className="label-tab" style={{ color: "var(--footer-text-muted)" }}>Tech Stack</h4>
             <ul className="mt-4 space-y-2.5">
               {TECH_STACK.map((tech) => (
-                <li key={tech} className="text-sm text-secondary">
+                <li key={tech} className="text-sm" style={{ color: "var(--footer-text-secondary)" }}>
                   {tech}
                 </li>
               ))}
@@ -76,16 +87,16 @@ export default function Footer() {
         </div>
 
         <div
-          className="mt-14 flex flex-col items-center justify-between gap-4 border-t pt-6 text-xs text-muted sm:flex-row"
-          style={{ borderColor: "var(--border-subtle)" }}
+          className="mt-14 flex flex-col items-center justify-between gap-4 border-t-[1.5px] pt-6 text-xs sm:flex-row"
+          style={{ borderColor: "var(--footer-border)", color: "var(--footer-text-muted)" }}
         >
-          <p>Built for Personal Experience — FAQ Chatbot</p>
-            <div className="flex items-center gap-4">
+          <p>A personal project: the FAQAI FAQ chatbot</p>
+          <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/Fatima-Eman-hub/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-brand-500"
+              className="flex items-center gap-1.5 transition-colors hover:text-[var(--color-mustard-400)]"
             >
               <GithubIcon className="h-3.5 w-3.5" /> GitHub
             </a>

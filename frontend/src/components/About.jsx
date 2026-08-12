@@ -15,12 +15,12 @@ const STEPS = [
   {
     number: "01",
     title: "FAQ Collection",
-    description: "30 hand-crafted AI/ML Q&A pairs stored in a JSON file, covering everything from neural networks to NLP fundamentals.",
+    description: "43 hand-crafted AI/ML Q&A pairs stored in a JSON file, covering everything from neural networks to NLP fundamentals.",
   },
   {
     number: "02",
     title: "NLP Preprocessing",
-    description: "Each question is lowercased, tokenized, stripped of stop words, and lemmatized using NLTK's WordNetLemmatizer.",
+    description: "Each question is lowercased, tokenized, stripped of stop words, and stemmed using NLTK's PorterStemmer.",
   },
   {
     number: "03",
@@ -38,32 +38,32 @@ export default function About() {
   return (
     <section id="about" className="px-6 py-16 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        <span className="text-xs font-semibold uppercase tracking-widest text-brand-500">
+        <span className="label-tab" style={{ color: "var(--color-mustard-600)" }}>
           About the project
         </span>
         <h2 className="mt-3 font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-          Built for an AI Experience,
+          A self-directed study
           <br />
-          <span className="text-secondary">designed for a portfolio.</span>
+          <span className="text-secondary">in explainable NLP.</span>
         </h2>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-secondary">
-          This FAQ Chatbot was built as a personal learning project. It
-          demonstrates real-world NLP techniques — not toy examples — by
+          This FAQ chatbot was built as a personal learning project. It
+          demonstrates real-world NLP techniques, not toy examples, by
           implementing a full TF-IDF pipeline with proper text preprocessing.
         </p>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-secondary">
-          The backend runs NLTK for tokenization and lemmatization,
-          Scikit-learn for vectorization, and FastAPI for the REST API. The
-          frontend is a polished React app with dark mode, animations, and a
-          smooth chat interface.
+          The backend runs NLTK for tokenization and stemming, Scikit-learn
+          for vectorization, and FastAPI for the REST API. The frontend is a
+          hand-built React app with dark mode, animation, and a smooth chat
+          interface.
         </p>
 
         <div className="mt-7 flex flex-wrap gap-2.5">
           {TECH_STACK.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border px-4 py-1.5 text-sm font-medium text-brand-600 dark:text-brand-300"
+              className="label-tab rounded-md border-[1.5px] px-3 py-1.5"
               style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-subtle)" }}
             >
               {tech}
@@ -79,9 +79,12 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="surface-card flex items-start gap-4 rounded-2xl p-6 shadow-sm sm:items-center"
+              className="surface-card flex items-start gap-4 p-6 sm:items-center"
             >
-              <span className="font-display shrink-0 text-sm font-bold text-brand-500">
+              <span
+                className="font-mono shrink-0 text-sm font-bold"
+                style={{ color: "var(--color-mustard-600)" }}
+              >
                 {step.number}
               </span>
               <div>

@@ -35,7 +35,7 @@ export default function SuggestedQuestions({ onSelect, disabled, category }) {
           type="button"
           onClick={() => onSelect(q)}
           disabled={disabled}
-          className="rounded-full border px-3.5 py-1.5 text-xs font-medium text-secondary transition-colors hover:border-brand-400 hover:text-brand-500 disabled:opacity-50"
+          className="rounded-md border-[1.5px] px-3.5 py-1.5 text-xs font-medium text-secondary transition-colors hover:border-current hover:text-[var(--text-primary)] disabled:opacity-50"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-subtle)" }}
         >
           {q}

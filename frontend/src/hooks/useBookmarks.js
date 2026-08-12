@@ -18,7 +18,7 @@ export function useBookmarks() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
     } catch {
-      // localStorage unavailable — bookmarks stay in-memory for this session
+      // localStorage unavailable; bookmarks stay in-memory for this session
     }
   }, [bookmarks]);
 

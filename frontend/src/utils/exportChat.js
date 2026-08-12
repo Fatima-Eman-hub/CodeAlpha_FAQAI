@@ -30,7 +30,7 @@ export async function exportChatAsPdf(messages) {
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(16);
-  doc.text("FAQAI — Chat Transcript", margin, y);
+  doc.text("FAQAI - Chat Transcript", margin, y);
   y += 20;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);

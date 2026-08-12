@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import AmbientBackground from "./components/AmbientBackground";
+import CornerMarks from "./components/CornerMarks";
 import Home from "./pages/Home";
 import Chatbot from "./pages/Chatbot";
 
@@ -27,7 +27,7 @@ export default function App() {
     <ThemeProvider>
       <BrowserRouter>
         <div className="relative min-h-screen">
-          <AmbientBackground />
+          <CornerMarks />
           <Navbar />
           <ScrollToHash />
           <main>

@@ -5,10 +5,10 @@ import { useBookmarks } from "../hooks/useBookmarks";
 
 function QuestionRow({ faq, onSelectQuestion, isBookmarked, onToggleBookmark }) {
   return (
-    <div className="group flex items-center gap-1 rounded-lg pr-1 hover:bg-[var(--bg-subtle)]">
+    <div className="group flex items-center gap-1 rounded-md pr-1 hover:bg-[var(--bg-subtle)]">
       <button
         onClick={() => onSelectQuestion(faq.question)}
-        className="flex-1 truncate px-3 py-2 text-left text-sm text-secondary hover:text-brand-500"
+        className="flex-1 truncate px-3 py-2 text-left text-sm text-secondary hover:text-[var(--text-primary)]"
       >
         {faq.question}
       </button>
@@ -20,7 +20,12 @@ function QuestionRow({ faq, onSelectQuestion, isBookmarked, onToggleBookmark }) 
         }`}
       >
         <Star
-          className={`h-3.5 w-3.5 ${isBookmarked ? "fill-brand-500 text-brand-500" : "text-muted"}`}
+          className="h-3.5 w-3.5"
+          style={
+            isBookmarked
+              ? { fill: "var(--color-mustard-500)", color: "var(--color-mustard-600)" }
+              : { color: "var(--text-muted)" }
+          }
         />
       </button>
     </div>
@@ -54,7 +59,7 @@ export default function CategorySidebar({ activeCategory, onSelectCategory, onSe
       {/* Search */}
       <div>
         <div
-          className="flex items-center gap-2 rounded-lg border px-3 py-2"
+          className="flex items-center gap-2 rounded-md border-[1.5px] px-3 py-2"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)" }}
         >
           <Search className="h-3.5 w-3.5 shrink-0 text-muted" />
@@ -66,7 +71,7 @@ export default function CategorySidebar({ activeCategory, onSelectCategory, onSe
           />
           {searchTerm && (
             <button onClick={() => setSearchTerm("")} aria-label="Clear search">
-              <X className="h-3.5 w-3.5 text-muted hover:text-brand-500" />
+              <X className="h-3.5 w-3.5 text-muted hover:text-[var(--text-primary)]" />
             </button>
           )}
         </div>
@@ -94,49 +99,56 @@ export default function CategorySidebar({ activeCategory, onSelectCategory, onSe
         <>
           {/* Categories */}
           <div>
-            <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
+            <div className="label-tab mb-3 flex items-center gap-2 text-muted">
               <Layers className="h-3.5 w-3.5" />
               Categories
             </div>
             <div className="flex flex-col gap-1">
               <button
                 onClick={() => onSelectCategory(null)}
-                className={`flex items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                className="flex items-center justify-between rounded-md px-3 py-2 text-left text-sm font-semibold transition-colors"
+                style={
                   !activeCategory
-                    ? "bg-gradient-to-br from-brand-500 to-brand-700 font-semibold text-white"
-                    : "text-secondary hover:bg-[var(--bg-subtle)]"
-                }`}
+                    ? { backgroundColor: "var(--ink)", color: "var(--bg-base)" }
+                    : { color: "var(--text-secondary)" }
+                }
+                onMouseEnter={(e) => { if (activeCategory) e.currentTarget.style.backgroundColor = "var(--bg-subtle)"; }}
+                onMouseLeave={(e) => { if (activeCategory) e.currentTarget.style.backgroundColor = "transparent"; }}
               >
                 All Questions
               </button>
-              {categories.map((cat) => (
-                <button
-                  key={cat.name}
-                  onClick={() => onSelectCategory(cat.name)}
-                  className={`flex items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors ${
-                    activeCategory === cat.name
-                      ? "bg-gradient-to-br from-brand-500 to-brand-700 font-semibold text-white"
-                      : "text-secondary hover:bg-[var(--bg-subtle)]"
-                  }`}
-                >
-                  <span>{cat.name}</span>
-                  <span
-                    className={`rounded-full px-1.5 py-0.5 text-[11px] ${
-                      activeCategory === cat.name ? "bg-white/20" : "text-muted"
-                    }`}
-                    style={activeCategory === cat.name ? {} : { backgroundColor: "var(--bg-subtle)" }}
+              {categories.map((cat) => {
+                const active = activeCategory === cat.name;
+                return (
+                  <button
+                    key={cat.name}
+                    onClick={() => onSelectCategory(cat.name)}
+                    className="flex items-center justify-between rounded-md px-3 py-2 text-left text-sm transition-colors"
+                    style={active ? { backgroundColor: "var(--ink)", color: "var(--bg-base)", fontWeight: 600 } : { color: "var(--text-secondary)" }}
+                    onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = "var(--bg-subtle)"; }}
+                    onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = "transparent"; }}
                   >
-                    {cat.count}
-                  </span>
-                </button>
-              ))}
+                    <span>{cat.name}</span>
+                    <span
+                      className="rounded-full px-1.5 py-0.5 font-mono text-[11px]"
+                      style={
+                        active
+                          ? { backgroundColor: "var(--color-mustard-400)", color: "var(--color-teal-800)" }
+                          : { backgroundColor: "var(--bg-subtle)", color: "var(--text-muted)" }
+                      }
+                    >
+                      {cat.count}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Popular / Trending */}
           {popular.length > 0 && (
             <div>
-              <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
+              <div className="label-tab mb-3 flex items-center gap-2 text-muted">
                 <TrendingUp className="h-3.5 w-3.5" />
                 Trending Questions
               </div>
@@ -157,7 +169,7 @@ export default function CategorySidebar({ activeCategory, onSelectCategory, onSe
           {/* Bookmarks */}
           {bookmarks.length > 0 && (
             <div>
-              <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted">
+              <div className="label-tab mb-3 flex items-center gap-2 text-muted">
                 <Star className="h-3.5 w-3.5" />
                 Bookmarked
               </div>
@@ -166,7 +178,7 @@ export default function CategorySidebar({ activeCategory, onSelectCategory, onSe
                   <button
                     key={b.id}
                     onClick={() => onSelectQuestion(b.question)}
-                    className="truncate rounded-lg px-3 py-2 text-left text-sm text-secondary hover:bg-[var(--bg-subtle)] hover:text-brand-500"
+                    className="truncate rounded-md px-3 py-2 text-left text-sm text-secondary hover:bg-[var(--bg-subtle)] hover:text-[var(--text-primary)]"
                   >
                     {b.question}
                   </button>
@@ -182,18 +194,18 @@ export default function CategorySidebar({ activeCategory, onSelectCategory, onSe
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="surface-card sticky top-24 hidden h-fit max-h-[75vh] shrink-0 overflow-y-auto rounded-2xl p-5 lg:block lg:w-72">
+      <aside className="surface-card sticky top-24 hidden h-fit max-h-[75vh] shrink-0 overflow-y-auto p-5 lg:block lg:w-72">
         {content}
       </aside>
 
       {/* Mobile dropdown */}
-      <div className="surface-card mb-4 rounded-2xl lg:hidden">
+      <div className="surface-card mb-4 lg:hidden">
         <button
           onClick={() => setMobileOpen((o) => !o)}
           className="flex w-full items-center justify-between px-5 py-4 text-sm font-semibold"
         >
           <span className="flex items-center gap-2">
-            <Layers className="h-4 w-4 text-brand-500" />
+            <Layers className="h-4 w-4" style={{ color: "var(--color-mustard-600)" }} />
             Browse categories, search &amp; trending
           </span>
           <ChevronDown className={`h-4 w-4 transition-transform ${mobileOpen ? "rotate-180" : ""}`} />

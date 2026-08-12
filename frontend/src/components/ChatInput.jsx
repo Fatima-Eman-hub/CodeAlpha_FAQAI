@@ -59,7 +59,7 @@ export default function ChatInput({ onSend, disabled }) {
   return (
     <form onSubmit={handleSubmit} className="flex items-end gap-3">
       <div
-        className="flex flex-1 items-end gap-2 rounded-2xl border px-4 py-3"
+        className="flex flex-1 items-end gap-2 rounded-md border-[1.5px] px-4 py-3"
         style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)" }}
       >
         <textarea
@@ -78,8 +78,8 @@ export default function ChatInput({ onSend, disabled }) {
             onClick={toggleListening}
             disabled={disabled}
             aria-label={listening ? "Stop voice input" : "Start voice input"}
-            className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors ${
-              listening ? "bg-red-500 text-white" : "text-muted hover:text-brand-500"
+            className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors ${
+              listening ? "bg-red-500 text-white" : "text-muted hover:text-[var(--text-primary)]"
             }`}
           >
             {listening ? <MicOff className="h-3.5 w-3.5" /> : <Mic className="h-3.5 w-3.5" />}
@@ -90,7 +90,8 @@ export default function ChatInput({ onSend, disabled }) {
         type="submit"
         disabled={disabled || !value.trim()}
         aria-label="Send message"
-        className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-md shadow-brand-500/25 transition-all hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
+        className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-md transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
+        style={{ backgroundColor: "var(--ink)", color: "var(--bg-base)" }}
       >
         <Send className="h-4 w-4" strokeWidth={2} />
       </button>

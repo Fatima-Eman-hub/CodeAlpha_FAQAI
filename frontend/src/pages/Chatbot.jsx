@@ -21,7 +21,7 @@ export default function Chatbot() {
           transition={{ duration: 0.4 }}
           className="font-display text-3xl font-bold tracking-tight sm:text-4xl"
         >
-          Ask <span className="text-brand-500">FAQAI</span> anything
+          Ask <span style={{ color: "var(--color-mustard-600)" }}>FAQAI</span> anything
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: -4 }}
@@ -29,7 +29,7 @@ export default function Chatbot() {
           transition={{ duration: 0.4, delay: 0.05 }}
           className="mt-3 text-secondary"
         >
-          Powered by TF-IDF and Cosine Similarity — real NLP, not keyword matching.
+          Powered by TF-IDF and Cosine Similarity: real NLP, not keyword matching.
         </motion.p>
       </div>
 

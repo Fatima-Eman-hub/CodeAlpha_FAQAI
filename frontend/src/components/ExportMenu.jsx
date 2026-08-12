@@ -22,14 +22,14 @@ export default function ExportMenu({ messages }) {
         onClick={() => setOpen((o) => !o)}
         disabled={!hasContent}
         aria-label="Export chat"
-        className="flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-medium text-secondary transition-colors hover:bg-[var(--bg-subtle)] hover:text-brand-500 disabled:opacity-40 sm:px-3"
+        className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium text-secondary transition-colors hover:bg-[var(--bg-subtle)] hover:text-[var(--text-primary)] disabled:opacity-40 sm:px-3"
       >
         <Download className="h-3.5 w-3.5" />
         <span className="hidden sm:inline">Export</span>
       </button>
       {open && (
         <div
-          className="surface-card absolute right-0 top-full z-10 mt-2 w-40 overflow-hidden rounded-xl py-1"
+          className="surface-card absolute right-0 top-full z-10 mt-2 w-40 overflow-hidden py-1"
         >
           <button
             onClick={() => {
