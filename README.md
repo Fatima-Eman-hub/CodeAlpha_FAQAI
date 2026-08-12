@@ -102,7 +102,7 @@ Built as a personal learning project.
 ## 📁 Project Structure
 
 ```
-faq-chatbot/
+AI-ML FAQ Chatbot/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py                 # FastAPI app entrypoint, CORS setup
@@ -134,9 +134,6 @@ faq-chatbot/
 │
 └── docs/
     └── screenshots/                # Project screenshots
-```
-
----
 
 ## 🚀 Getting Started
 
@@ -175,9 +172,24 @@ cp .env.example .env         # Windows: copy .env.example .env
 npm run dev
 ```
 
+For Windows PowerShell:
+
+```powershell
+cd frontend
+npm install
+Copy-Item .env.example .env
+npm run dev
+```
+
 Frontend runs at `http://localhost:5173`.
 
 > ⚠️ Both servers must be running simultaneously for the chatbot to work.
+
+If your backend runs on a different host or port, update `frontend/.env`:
+
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8001
+```
 
 ---
 

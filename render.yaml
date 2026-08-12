@@ -1,9 +1,3 @@
-# Render deployment reference (optional — you can also configure these
-# settings manually in the Render dashboard instead of using this file).
-#
-# If you use this file: Render Dashboard → New → Blueprint → point at this repo.
-# Otherwise, just use the manual settings documented in the README / deployment guide.
-
 services:
   - type: web
     name: faqai-backend
